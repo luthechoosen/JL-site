@@ -31,7 +31,6 @@ a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-/* ---------- nav ---------- */
 nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:baseline;justify-content:space-between;padding:16px 28px;max-width:var(--maxw);margin:0 auto}
 .wordmark{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--ink);letter-spacing:.01em}
@@ -40,12 +39,11 @@ nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 8
 .nav-links a{font-family:var(--mono);font-size:13px;color:var(--steel);letter-spacing:.02em}
 .nav-links a:hover{color:var(--copper);text-decoration:none}
 
-/* ---------- hero ---------- */
 header{border-bottom:1px solid var(--line);overflow:hidden}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:72px 28px 64px;max-width:var(--maxw);margin:0 auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:56px 28px 56px;max-width:var(--maxw);margin:0 auto}
 .eyebrow{font-family:var(--mono);font-size:13px;color:var(--steel);margin-bottom:18px}
 .eyebrow::before{content:'▸ ';color:var(--copper)}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(42px,6vw,68px);line-height:1.02;letter-spacing:-.01em;margin-bottom:22px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(42px,6vw,64px);line-height:1.02;letter-spacing:-.01em;margin-bottom:22px}
 h1 .accent{color:var(--copper)}
 .hero p.lede{font-size:19px;color:var(--steel);max-width:46ch;margin-bottom:30px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -54,23 +52,13 @@ h1 .accent{color:var(--copper)}
 .btn.primary{background:var(--copper);border-color:var(--copper);color:#fff}
 .btn.primary:hover{background:#9C4E1E;border-color:#9C4E1E}
 
-/* topology */
-.topo{width:100%;height:auto;display:block}
-.topo .node{fill:var(--paper);stroke:var(--steel);stroke-width:1.5}
-.topo .node.spine{stroke:var(--ink);stroke-width:2}
-.topo .link{stroke:var(--steel-faint);stroke-width:1.25;fill:none}
-.topo .packet{stroke:var(--copper);stroke-width:2;fill:none;stroke-dasharray:6 220;animation:flow 5s linear infinite}
-.topo .packet.p2{animation-delay:1.4s}
-.topo .packet.p3{animation-delay:2.7s}
-.topo .packet.p4{animation-delay:3.6s}
-.topo text{font-family:var(--mono);font-size:10px;fill:var(--steel)}
-@keyframes flow{to{stroke-dashoffset:-226}}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .topo .packet{animation:none;stroke-dasharray:none;opacity:.55}
-}
+/* 3D stage */
+.stage{position:relative;width:100%;aspect-ratio:1/1;max-width:520px;margin-left:auto;cursor:grab;touch-action:none}
+.stage.dragging{cursor:grabbing}
+.stage canvas{display:block;width:100%;height:100%}
+.stage-hint{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);font-family:var(--mono);font-size:11.5px;color:var(--steel-faint);pointer-events:none;user-select:none;white-space:nowrap;transition:opacity .6s}
+.stage.touched .stage-hint{opacity:0}
 
-/* ---------- sections ---------- */
 section{padding:72px 0;border-bottom:1px solid var(--line)}
 .sec-label{font-family:var(--mono);font-size:13px;color:var(--copper);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.5vw,38px);line-height:1.1;margin-bottom:28px}
@@ -78,7 +66,6 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.5vw,38px);l
 .prose p+p{margin-top:16px}
 .prose .quiet{color:var(--steel)}
 
-/* spec sheet */
 .spec{width:100%;border-collapse:collapse;margin-top:8px}
 .spec th,.spec td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
 .spec th{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--steel);white-space:nowrap;width:220px}
@@ -86,7 +73,6 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.5vw,38px);l
 .spec tr:hover td{background:var(--copper-soft)}
 .spec .tag{font-family:var(--mono);font-size:12px;color:var(--copper)}
 
-/* writing */
 .post{display:block;padding:22px 0;border-bottom:1px solid var(--line);color:var(--ink)}
 .post:hover{text-decoration:none;background:var(--copper-soft)}
 .post:last-child{border-bottom:none}
@@ -95,7 +81,6 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.5vw,38px);l
 .post p{color:var(--steel);max-width:64ch;font-size:15.5px}
 .post .read{font-family:var(--mono);font-size:13px;color:var(--copper);margin-top:8px;display:inline-block}
 
-/* projects */
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .card{border:1px solid var(--line);background:var(--panel);padding:26px}
 .card .meta{font-family:var(--mono);font-size:12.5px;color:var(--steel);margin-bottom:10px}
@@ -103,18 +88,16 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.5vw,38px);l
 .card p{font-size:15.5px;color:var(--ink);margin-bottom:14px}
 .card code{font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--line);padding:2px 7px}
 
-/* contact */
 .contact-row{display:flex;gap:36px;flex-wrap:wrap;margin-top:10px}
 .contact-row a{font-family:var(--mono);font-size:15px}
 
-/* footer */
 footer{padding:36px 0 48px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer p{font-family:var(--mono);font-size:12.5px;color:var(--steel)}
 
 @media(max-width:820px){
-  .hero{grid-template-columns:1fr;padding-top:52px}
-  .topo-wrap{order:-1;max-width:440px}
+  .hero{grid-template-columns:1fr;padding-top:44px}
+  .stage{order:-1;max-width:420px;margin:0 auto}
   .projects{grid-template-columns:1fr}
   .spec th{width:150px}
   .nav-links{gap:16px}
@@ -147,55 +130,8 @@ footer p{font-family:var(--mono);font-size:12.5px;color:var(--steel)}
         <a class="btn" href="#contact">Get in touch</a>
       </div>
     </div>
-    <div class="topo-wrap">
-      <!-- Fat-tree topology: 3 spine, 6 leaf. The signature. -->
-      <svg class="topo" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated diagram of a fat-tree cluster interconnect with packets moving between spine and leaf switches">
-        <!-- links spine->leaf (every spine to every leaf) -->
-        <g>
-          <path class="link" d="M105 70 L45 210"/><path class="link" d="M105 70 L111 210"/><path class="link" d="M105 70 L177 210"/><path class="link" d="M105 70 L243 210"/><path class="link" d="M105 70 L309 210"/><path class="link" d="M105 70 L375 210"/>
-          <path class="link" d="M210 70 L45 210"/><path class="link" d="M210 70 L111 210"/><path class="link" d="M210 70 L177 210"/><path class="link" d="M210 70 L243 210"/><path class="link" d="M210 70 L309 210"/><path class="link" d="M210 70 L375 210"/>
-          <path class="link" d="M315 70 L45 210"/><path class="link" d="M315 70 L111 210"/><path class="link" d="M315 70 L177 210"/><path class="link" d="M315 70 L243 210"/><path class="link" d="M315 70 L309 210"/><path class="link" d="M315 70 L375 210"/>
-        </g>
-        <!-- animated packets -->
-        <path class="packet" d="M45 210 L105 70 L375 210"/>
-        <path class="packet p2" d="M309 210 L210 70 L111 210"/>
-        <path class="packet p3" d="M243 210 L315 70 L45 210"/>
-        <path class="packet p4" d="M177 210 L105 70 L309 210"/>
-        <!-- spine switches -->
-        <g>
-          <rect class="node spine" x="85" y="56" width="40" height="16"/>
-          <rect class="node spine" x="190" y="56" width="40" height="16"/>
-          <rect class="node spine" x="295" y="56" width="40" height="16"/>
-          <text x="105" y="46" text-anchor="middle">spine0</text>
-          <text x="210" y="46" text-anchor="middle">spine1</text>
-          <text x="315" y="46" text-anchor="middle">spine2</text>
-        </g>
-        <!-- leaf switches -->
-        <g>
-          <rect class="node" x="29" y="202" width="32" height="14"/>
-          <rect class="node" x="95" y="202" width="32" height="14"/>
-          <rect class="node" x="161" y="202" width="32" height="14"/>
-          <rect class="node" x="227" y="202" width="32" height="14"/>
-          <rect class="node" x="293" y="202" width="32" height="14"/>
-          <rect class="node" x="359" y="202" width="32" height="14"/>
-        </g>
-        <!-- compute nodes -->
-        <g>
-          <circle class="node" cx="37" cy="252" r="4"/><circle class="node" cx="53" cy="252" r="4"/>
-          <circle class="node" cx="103" cy="252" r="4"/><circle class="node" cx="119" cy="252" r="4"/>
-          <circle class="node" cx="169" cy="252" r="4"/><circle class="node" cx="185" cy="252" r="4"/>
-          <circle class="node" cx="235" cy="252" r="4"/><circle class="node" cx="251" cy="252" r="4"/>
-          <circle class="node" cx="301" cy="252" r="4"/><circle class="node" cx="317" cy="252" r="4"/>
-          <circle class="node" cx="367" cy="252" r="4"/><circle class="node" cx="383" cy="252" r="4"/>
-          <path class="link" d="M45 216 L37 248"/><path class="link" d="M45 216 L53 248"/>
-          <path class="link" d="M111 216 L103 248"/><path class="link" d="M111 216 L119 248"/>
-          <path class="link" d="M177 216 L169 248"/><path class="link" d="M177 216 L185 248"/>
-          <path class="link" d="M243 216 L235 248"/><path class="link" d="M243 216 L251 248"/>
-          <path class="link" d="M309 216 L301 248"/><path class="link" d="M309 216 L317 248"/>
-          <path class="link" d="M375 216 L367 248"/><path class="link" d="M375 216 L383 248"/>
-          <text x="210" y="285" text-anchor="middle">fat-tree · non-blocking · every leaf reaches every spine</text>
-        </g>
-      </svg>
+    <div class="stage" id="stage" aria-label="Interactive 3D model of a supercomputer cabinet row. Click and drag to rotate.">
+      <span class="stage-hint">drag to rotate the cluster</span>
     </div>
   </div>
 </header>
@@ -269,7 +205,7 @@ footer p{font-family:var(--mono);font-size:12.5px;color:var(--steel)}
       <div class="card">
         <p class="meta">web · this site</p>
         <h3>justinluis.com</h3>
-        <p>This site itself: a single hand-tuned HTML file, no framework, no build step, served free on a global CDN behind a domain I've held since 2015. Fast because there's nothing to be slow.</p>
+        <p>This site itself: a single hand-tuned HTML file with a live 3D cluster, no framework, no build step, deployed by git push to a global CDN. Fast because there's nothing to be slow.</p>
         <code>$ git push &nbsp;→&nbsp; live worldwide</code>
       </div>
     </div>
@@ -286,7 +222,7 @@ footer p{font-family:var(--mono);font-size:12.5px;color:var(--steel)}
     <div class="contact-row">
       <a href="mailto:hello@justinluis.com">hello@justinluis.com</a>
       <a href="https://www.linkedin.com/" rel="me">linkedin</a>
-      <a href="https://github.com/" rel="me">github</a>
+      <a href="https://github.com/luthechoosen" rel="me">github</a>
     </div>
   </div>
 </section>
@@ -300,5 +236,173 @@ footer p{font-family:var(--mono);font-size:12.5px;color:var(--steel)}
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+  if (!stage || !window.THREE) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  camera.position.set(0, 2.2, 8.2);
+  camera.lookAt(0, 0.6, 0);
+
+  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  stage.appendChild(renderer.domElement);
+
+  // ---- lights ----
+  scene.add(new THREE.AmbientLight(0xdfe6ea, 0.85));
+  var key = new THREE.DirectionalLight(0xffffff, 0.7);
+  key.position.set(4, 6, 5);
+  scene.add(key);
+  var warm = new THREE.PointLight(0xB95F27, 0.5, 20);
+  warm.position.set(-3, 2, 4);
+  scene.add(warm);
+
+  // ---- materials ----
+  var matCab   = new THREE.MeshStandardMaterial({ color: 0x1a232c, roughness: 0.55, metalness: 0.35 });
+  var matDark  = new THREE.MeshStandardMaterial({ color: 0x10161c, roughness: 0.7,  metalness: 0.2 });
+  var matCopper= new THREE.MeshStandardMaterial({ color: 0xB95F27, roughness: 0.35, metalness: 0.75 });
+  var matFloor = new THREE.MeshStandardMaterial({ color: 0xc7d0d5, roughness: 0.9,  metalness: 0.05 });
+
+  var cluster = new THREE.Group();
+  scene.add(cluster);
+
+  // raised floor
+  var floor = new THREE.Mesh(new THREE.BoxGeometry(7.6, 0.18, 3.2), matFloor);
+  floor.position.y = -1.55;
+  cluster.add(floor);
+
+  // floor tile seams (thin dark strips)
+  for (var t = -3; t <= 3; t++) {
+    var seam = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.19, 3.2), matDark);
+    seam.position.set(t, -1.55, 0);
+    cluster.add(seam);
+  }
+
+  // ---- cabinets + LED grids ----
+  var leds = []; // {mesh, mat, phase, speed}
+  var CABS = 4, CW = 1.5, CH = 2.9, CD = 1.4, GAP = 0.14;
+  var startX = -((CABS * CW + (CABS - 1) * GAP) / 2) + CW / 2;
+
+  for (var i = 0; i < CABS; i++) {
+    var x = startX + i * (CW + GAP);
+
+    var cab = new THREE.Mesh(new THREE.BoxGeometry(CW, CH, CD), matCab);
+    cab.position.set(x, CH / 2 - 1.46, 0);
+    cluster.add(cab);
+
+    // recessed front face
+    var face = new THREE.Mesh(new THREE.BoxGeometry(CW - 0.16, CH - 0.16, 0.05), matDark);
+    face.position.set(x, CH / 2 - 1.46, CD / 2 + 0.005);
+    cluster.add(face);
+
+    // copper top trim
+    var trim = new THREE.Mesh(new THREE.BoxGeometry(CW - 0.1, 0.06, CD - 0.1), matCopper);
+    trim.position.set(x, CH - 1.46 + 0.04, 0);
+    cluster.add(trim);
+
+    // blade rows: shelves + LEDs on the face
+    var rows = 9, cols = 5;
+    for (var r = 0; r < rows; r++) {
+      var y = (CH - 0.5) * (r / (rows - 1)) - 1.2;
+      // shelf line
+      var shelf = new THREE.Mesh(new THREE.BoxGeometry(CW - 0.22, 0.015, 0.02), new THREE.MeshBasicMaterial({ color: 0x2a3843 }));
+      shelf.position.set(x, y - 0.12, CD / 2 + 0.032);
+      cluster.add(shelf);
+      for (var c = 0; c < cols; c++) {
+        var lx = x + (c - (cols - 1) / 2) * ((CW - 0.4) / (cols - 1));
+        var ledMat = new THREE.MeshBasicMaterial({ color: 0x62d98a });
+        var led = new THREE.Mesh(new THREE.BoxGeometry(0.055, 0.055, 0.02), ledMat);
+        led.position.set(lx, y, CD / 2 + 0.035);
+        cluster.add(led);
+        leds.push({ mat: ledMat, phase: Math.random() * Math.PI * 2, speed: 0.5 + Math.random() * 2.5, amber: Math.random() < 0.12 });
+      }
+    }
+  }
+
+  // overhead cable tray with copper cables
+  var tray = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.08, 0.5), matDark);
+  tray.position.set(0, CH - 1.46 + 0.45, -0.2);
+  cluster.add(tray);
+  for (var k = 0; k < 5; k++) {
+    var cable = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 7.0, 6), matCopper);
+    cable.rotation.z = Math.PI / 2;
+    cable.position.set(0, CH - 1.46 + 0.52 + k * 0.012, -0.2 + (k - 2) * 0.07);
+    cluster.add(cable);
+  }
+
+  cluster.rotation.y = -0.5;
+  cluster.rotation.x = 0.06;
+
+  // ---- interaction: drag to rotate ----
+  var dragging = false, lastX = 0, lastY = 0;
+  var velY = 0, velX = 0;
+  var idleSpin = reduceMotion ? 0 : 0.0035;
+
+  function down(e) {
+    dragging = true;
+    stage.classList.add('dragging', 'touched');
+    var p = e.touches ? e.touches[0] : e;
+    lastX = p.clientX; lastY = p.clientY;
+  }
+  function move(e) {
+    if (!dragging) return;
+    var p = e.touches ? e.touches[0] : e;
+    var dx = p.clientX - lastX, dy = p.clientY - lastY;
+    lastX = p.clientX; lastY = p.clientY;
+    cluster.rotation.y += dx * 0.008;
+    cluster.rotation.x += dy * 0.005;
+    cluster.rotation.x = Math.max(-1.2, Math.min(1.2, cluster.rotation.x));
+    velY = dx * 0.008; velX = dy * 0.005;
+    if (e.cancelable) e.preventDefault();
+  }
+  function up() { dragging = false; stage.classList.remove('dragging'); }
+
+  stage.addEventListener('pointerdown', down);
+  window.addEventListener('pointermove', move, { passive: false });
+  window.addEventListener('pointerup', up);
+  stage.addEventListener('touchstart', down, { passive: true });
+  window.addEventListener('touchmove', move, { passive: false });
+  window.addEventListener('touchend', up);
+
+  // ---- resize ----
+  function resize() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ---- animate ----
+  var clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    var t = clock.getElapsedTime();
+
+    if (!dragging) {
+      // inertia decay, then gentle idle spin
+      cluster.rotation.y += velY + idleSpin;
+      cluster.rotation.x += velX;
+      cluster.rotation.x = Math.max(-1.2, Math.min(1.2, cluster.rotation.x));
+      velY *= 0.94; velX *= 0.9;
+    }
+
+    // blinkenlights
+    for (var i = 0; i < leds.length; i++) {
+      var L = leds[i];
+      var on = Math.sin(t * L.speed + L.phase) > (L.amber ? 0.55 : -0.2);
+      L.mat.color.setHex(on ? (L.amber ? 0xd8a253 : 0x62d98a) : 0x1c2a26);
+    }
+
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
 </body>
 </html>
